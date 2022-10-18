@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+*{
+  box-sizing: border-box;
+  width: 100%;
+  padding: none;
+  margin: none;
+}
+html,
+body {
+  /* background: #505250a9; */
+
+/* Ubicación de la imagen */
+background-image: url('https://images.pexels.com/photos/205321/pexels-photo-205321.png?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940');
+/* background-image: url('https://images.pexels.com/photos/2565919/pexels-photo-2565919.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940'); */
+/* Para dejar la imagen de fondo centrada, vertical y
+horizontalmente */
+background-position: center center;
+/* Para que la imagen de fondo no se repita */
+background-repeat: no-repeat;
+/* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
+background-attachment: fixed;
+/* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
+background-size: cover;
+
+}
+h1{
+  text-align: center;
+  font-size: xxx-large;
+  font-family: 'Patrick Hand', cursive;
+  color: blueviolet;
+  transform: translate(0%,750%);
+}
+h2{
+  text-align: center;
+  font-size: medium;
+  font-family: 'Patrick Hand', cursive;
+  color: blueviolet;
+  transform: translate(0%,500%);
+}
+
+p{
+    text-align: center;
+    font-size: large;
+    font-family: 'Patrick Hand', cursive;
+    color: blueviolet;
+    transform: translate(0%,1200%);
+}
+button{
+    width: 20%;
+    display: block;
+    color:white;
+    /* font-weight: bold; */
+    background-color: #bcd8c1;
+    border-radius: 5rem; 
+    transform: translate(200%, 900%);
+    border: none;
+    font-size: large;
+    font-family: 'Patrick Hand', cursive;
+}

@@ -1,0 +1,78 @@
+<body>
+  <mat-card class="example-card">
+
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title class="title">GLOBAL</mat-card-title>
+    </mat-card-header>
+
+    <!-- Login -->
+    <mat-card-content>
+      <form (ngSubmit)="login()" [formGroup]="loginUsuario" class="example-form">
+        <!--formulario Login -->
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="Ex. Esteban@gmail.com" name="email">
+          <span *ngIf="loginUsuario.get('email')?.hasError('required') && loginUsuario.get('email')?.touched" class="text-danger">
+            El <strong>correo</strong> es requerido
+          </span>
+          <span *ngIf="loginUsuario.get('email')?.hasError('email') && loginUsuario.get('email')?.touched" class="text-danger">
+            Esta <strong>no</strong>  es una dirección de <strong>correo</strong> válida
+          </span>
+          <!-- <mat-icon> mail_outline</mat-icon> -->
+          <!-- <mat-hint>Digita tu usuario</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="contraseña" placeholder="Ex. 1234abcjs" name="password">
+          <span *ngIf="loginUsuario.get('contraseña')?.hasError('required') && loginUsuario.get('contraseña')?.touched" class="text-danger">
+            La <strong>contraseña</strong> es requerida
+          </span>
+          <span *ngIf="loginUsuario.get('contraseña')?.hasError('minlength') && loginUsuario.get('contraseña')?.touched" class="text-danger">
+            La <strong>contraseña</strong> requeriere mínimo de 6 caracteres
+          </span>
+
+          <!-- <mat-icon> vpn_key</mat-icon> -->
+          <!-- <mat-hint>Digita tu contraseña</mat-hint> -->
+        </mat-form-field>
+        <mat-card-actions>
+          <section>
+            <div class="example-button-row">
+              <button mat-button color="#ffffff" [disabled]="loginUsuario.invalid" type="submit">SIGN IN</button>
+            </div>
+          </section>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+    <mat-card-content class="example-forgot-password-text">
+      <p>
+        <a routerLink="/RecuperarContraseña">Forgot Your Password?</a>
+      </p>
+    </mat-card-content>
+
+    <mat-card-actions>
+      <section>
+        <mat-card-content class="example-create-account">
+          <p>
+            <a routerLink="/Register">Create Account</a>
+          </p>
+        </mat-card-content>
+        <mat-card-content class="example-continius-socials">
+          <p>
+            <u>Or Continius With</u>
+          </p>
+        </mat-card-content>
+        <div class="example-button-socials">
+          <ul>
+            <li><button type="button" (click)="loginFacebook()"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406234.png" alt="facebook"></button></li>
+            <li><button type="button" (click)="loginGithub()"><img src="https://cdn-icons-png.flaticon.com/512/3488/3488426.png" alt="github"></button></li>
+            <li><button type="button" (click)="loginGoogle()"><img src="https://cdn-icons-png.flaticon.com/512/2875/2875302.png" alt="google"></button></li>
+            <li><button type="button" (click)="loginTwitter()"><img src="https://cdn-icons-png.flaticon.com/512/356/356076.png" alt="twitter"></button></li>
+          </ul>
+        </div>
+      </section>
+    </mat-card-actions>
+
+  </mat-card>
+</body>

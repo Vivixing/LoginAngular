@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
+*{
+  box-sizing: border-box;
+  width: 100%;
+  padding: none;
+  margin: none;
+}
+html,
+body {
+  /* background: #505250a9; */
+
+/* Ubicación de la imagen */
+background-image: url('https://images.pexels.com/photos/434337/pexels-photo-434337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+/* Para dejar la imagen de fondo centrada, vertical y
+horizontalmente */
+background-position: center center;
+/* Para que la imagen de fondo no se repita */
+background-repeat: no-repeat;
+/* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
+background-attachment: fixed;
+/* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
+background-size: cover;
+
+}
+/* Tarjeta */
+.example-card {
+  max-width: 430px;
+  margin: 0px auto;
+  background-size: cover;
+  background-attachment: fixed;
+  padding: 1rem 2rem;
+  margin: auto;
+  border-radius: 10px;
+  background-color: #ecf0f3;
+  box-shadow: 13px 13px 20px #9fa0a1, -7px -7px 20px #444343;
+  color: black;
+  transform: translate(3rem, 3rem);
+  
+}
+
+.title{
+  margin-top: 18%;
+}
+.example-header-image {
+  background-image:url('https://cdn.computerhoy.com/sites/navi.axelspringer.es/public/media/image/2021/09/mejor-aplicacion-fondos-pantalla-animados-llegaria-android-dentro-poco-2482649.jpg');
+  background-attachment: fixed;
+  background-size: cover;    
+  background-repeat: no-repeat;
+  margin-left: 30%;
+}
+
+  /* Formulario */
+  .example-form {
+    min-width: 150px;
+    max-width: 400px;
+    margin: auto;
+    transform: translate(1%, 4%);   
+  }
+
+  /* Campo de texto */
+  .example-full-width {
+  max-width: 100%;
+  display: block;
+  margin: 0.5rem 0;
+  border-radius: 0.5rem;
+  background: #ebf5fc;
+  }
+  /* Texto de password */
+  .example-forgot-password-text p{
+    display: flex;
+    color:blueviolet;
+    margin: 0 12px;
+    font-size: medium;
+    font-family: 'Patrick Hand', cursive;
+  }
+  .example-forgot-password-text p:hover{
+    transform: translateX(3px) scale(1.07);
+  }
+  /* texto de crear cuenta */
+  .example-create-account p{
+    text-align: center;
+    margin: 20px 0;
+    font-family: 'Patrick Hand', cursive;
+    font-size: medium;
+  }
+  /* Texto de continuar con red social */
+  
+  .example-continius-socials p{
+    text-align: center;
+    font-size: medium;
+    font-family: 'Patrick Hand', cursive;
+    
+  }
+  /* Texto singup */
+  .example-sign-up p {
+    text-align: center;
+    font-size: medium;
+    font-family:'Patrick Hand', cursive;
+    color:blueviolet;
+  }
+  /* Css botón */
+  .example-button-row {
+  width: 50%;
+  display: block;
+  color:white;
+  font-weight: bold;
+  background-color: #bcd8c1;
+  border-radius: 2rem; 
+  transform: translate(55%, 0%); 
+  }
+
+  /* Iconos redes sociales */
+  .example-button-socials button{
+    display:flex;
+    height: 70wh;
+    align-items: center;
+    justify-content: center;
+    border: none;
+  }
+
+  .example-button-socials ul li {
+    display: inline-block;
+    margin: 0px 15px;
+    width:50px;
+  }
+
+  .example-button-socials ul li button{
+    display: cover;
+    border-radius: 5rem;
+    background: #bcd8c1;    
+    transition: .2s;
+  }
+  
+  .example-button-socials ul li button:hover{
+    transform: translateY(-3px) scale(1.05);
+    display: flex;
+    filter: none;
+  }
+
+   /* Texto requerido */
+   .text-danger{
+    color: red;
+  }
+
+  @media screen and (min-width:1200px) {
+  
+    .example-header-image{
+      width: 43px;
+      max-width: 400px;
+      height: auto;
+      
+      }
+    
+  }

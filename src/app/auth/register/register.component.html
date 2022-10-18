@@ -1,0 +1,83 @@
+<body>
+  <mat-card class="example-card">
+
+    <mat-card-header>
+      <div name="registro" mat-card-avatar class="example-header-image"></div>
+      <mat-card-title class="title">GLOBAL</mat-card-title>
+    </mat-card-header>
+
+    <!-- Register-->
+    <mat-card-content>
+      <div class="example-button-socials">
+        <ul>
+            <li><button type="button" (click)="registroFacebook()"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406234.png" alt="facebook"></button></li>
+            <li><button type="button" (click)="registroGithub()"><img src="https://cdn-icons-png.flaticon.com/512/3488/3488426.png" alt="github"></button></li>
+            <li><button type="button" (click)="registroGoogle()"><img src="https://cdn-icons-png.flaticon.com/512/2875/2875302.png" alt="google"></button></li>
+            <li><button type="button" (click)="registroTwitter()"><img src="https://cdn-icons-png.flaticon.com/512/356/356076.png" alt="twitter"></button></li>
+        </ul>
+      </div>
+
+      <mat-card-content class="example-sign-up">
+        <p>
+          Or Sign Up
+        </p>
+      </mat-card-content>
+
+      <form (ngSubmit)="registrar()" [formGroup]="registrarUsuario" class="example-form">
+        <!--formulario Registro -->
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Last Name</mat-label>
+          <input matInput formControlName="apellido" placeholder="Ex. Londoño Franco" name="nameregister">
+          <span *ngIf="registrarUsuario.get('apellido')?.hasError('required') && registrarUsuario.get('apellido')?.touched" class="text-danger">
+            El <strong>apellido</strong> es requerido
+          </span>
+          <!-- <mat-hint>Digita tu usuario</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="nombre" placeholder="Ex. Esteban" name="nameregister">
+          <span *ngIf="registrarUsuario.get('nombre')?.hasError('required') && registrarUsuario.get('nombre')?.touched" class="text-danger">
+            El <strong>nombre</strong> es requerido
+          </span>
+          <!-- <mat-hint>Digita tu usuario</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>E-mail</mat-label>
+          <input matInput type="email" formControlName="email" placeholder="Ex. Esteban@gmail.com" name="email">
+          <span *ngIf="registrarUsuario.get('email')?.hasError('required') && registrarUsuario.get('email')?.touched" class="text-danger">
+            El <strong>correo</strong> es requerido
+          </span>
+          <span *ngIf="registrarUsuario.get('email')?.hasError('email') && registrarUsuario.get('email')?.touched" class="text-danger">
+            Esta <strong>no</strong>  es una dirección de <strong>correo</strong> válida
+          </span>
+          <!-- <mat-icon> mail_outline</mat-icon> -->
+          <!-- <mat-hint>Digita tu usuario</mat-hint> -->
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" formControlName="contraseña" placeholder="Ex. 1234abcjs"
+            name="passwordregister">
+            <span *ngIf="registrarUsuario.get('contraseña')?.hasError('required') && registrarUsuario.get('contraseña')?.touched" class="text-danger">
+              La <strong>contraseña</strong> es requerida
+            </span>
+            <span *ngIf="registrarUsuario.get('contraseña')?.hasError('minlength') && registrarUsuario.get('contraseña')?.touched" class="text-danger">
+              La <strong>contraseña</strong> requeriere mínimo de 6 caracteres
+            </span>
+          <!-- <mat-icon> vpn_key</mat-icon> -->
+          <!-- <mat-hint>Digita tu contraseña</mat-hint> -->
+        </mat-form-field>
+        <mat-card-actions>
+          <section>
+            <div class="example-button-row">
+              <button mat-button color="#ffffff" [disabled]="registrarUsuario.invalid" type="submit">SIGN UP</button>
+            </div>
+          </section>
+        </mat-card-actions>
+      </form>
+    </mat-card-content>
+
+  </mat-card>
+</body>
