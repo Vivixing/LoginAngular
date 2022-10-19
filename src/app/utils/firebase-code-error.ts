@@ -4,5 +4,6 @@ export enum FirebaseErrorEnum {
     WrongPassword = 'auth/wrong-password',
     UserNotFound = 'auth/user-not-found',
     InternalError = 'auth/internal-error',
+    CredentialAlreadyInUse = 'auth/account-exists-with-different-credential',
    
 }

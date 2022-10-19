@@ -30,6 +30,11 @@ export class FirebaseErrorService {
       //Correo Invalido
       case FirebaseErrorEnum.InternalError:
         return 'Correo inválido'
+
+      //Cuenta Red Social Existente
+      case FirebaseErrorEnum.CredentialAlreadyInUse:
+        return 'Credencial de cuenta ya existe'  
+
       default:
         return 'Error desconcido'
     }

@@ -56,6 +56,7 @@ export class LoginComponent implements OnInit {
       console.log(res);
       this.router.navigate(['/Dashboard']);
     }).catch((error)=>{
+      this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
       console.log(error);
     });
   }
@@ -65,6 +66,7 @@ export class LoginComponent implements OnInit {
       console.log(res);
       this.router.navigate(['/Dashboard']);
     }).catch((error)=>{
+      this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
       console.log(error);
     });
   }
@@ -74,6 +76,7 @@ export class LoginComponent implements OnInit {
       console.log(res);
       this.router.navigate(['/Dashboard']);
     }).catch((error)=>{
+      this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
       console.log(error);
     });
   }

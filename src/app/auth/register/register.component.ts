@@ -63,12 +63,16 @@ export class RegisterComponent implements OnInit {
     this.afAuth.signInWithPopup(new GoogleAuthProvider()).then(()=> this.router.navigate(['/Dashboard']));
   }
   registroFacebook(){
-    this.afAuth.signInWithPopup(new FacebookAuthProvider()).then(()=> this.router.navigate(['/Dashboard']));
+    this.afAuth.signInWithPopup(new FacebookAuthProvider()).then(()=> this.router.navigate(['/Dashboard'])).catch((error)=>{
+      this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
+    });
   }
   registroGithub(){
-    this.afAuth.signInWithPopup(new GithubAuthProvider()).then(()=> this.router.navigate(['/Dashboard']));
+    this.afAuth.signInWithPopup(new GithubAuthProvider()).then(()=> this.router.navigate(['/Dashboard'])).catch((error)=>{
+      this.toastr.error(this.firebaseError.codeError(error.code), 'Error')});
   }
   registroTwitter(){
-    this.afAuth.signInWithPopup(new TwitterAuthProvider()).then(()=> this.router.navigate(['/Dashboard']));
+    this.afAuth.signInWithPopup(new TwitterAuthProvider()).then(()=> this.router.navigate(['/Dashboard'])).catch((error)=>{
+      this.toastr.error(this.firebaseError.codeError(error.code), 'Error')});
   }
 }
