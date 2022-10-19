@@ -8,11 +8,11 @@
 
     <!-- Login -->
     <mat-card-content>
-      <form (ngSubmit)="login()" [formGroup]="loginUsuario" class="example-form">
+      <form  (ngSubmit)="login()" [formGroup]="loginUsuario" class="example-form">
         <!--formulario Login -->
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>E-mail</mat-label>
-          <input matInput type="email" formControlName="email" placeholder="Ex. Esteban@gmail.com" name="email">
+          <input matInput type="email" formControlName="email" placeholder="Ex. Esteban@gmail.com" name="email" >
           <span *ngIf="loginUsuario.get('email')?.hasError('required') && loginUsuario.get('email')?.touched" class="text-danger">
             El <strong>correo</strong> es requerido
           </span>
@@ -63,7 +63,7 @@
             <u>Or Continius With</u>
           </p>
         </mat-card-content>
-        <div class="example-button-socials">
+        <div  class="example-button-socials">
           <ul>
             <li><button type="button" (click)="loginFacebook()"><img src="https://cdn-icons-png.flaticon.com/512/4406/4406234.png" alt="facebook"></button></li>
             <li><button type="button" (click)="loginGithub()"><img src="https://cdn-icons-png.flaticon.com/512/3488/3488426.png" alt="github"></button></li>

@@ -17,6 +17,13 @@ export class DashboardComponent implements OnInit {
     this.afAuth.currentUser.then(user =>{
       if(user && user.emailVerified){
         this.dataUser = user;
+        console.log(this.dataUser);
+      }else if(user && user.email){
+        this.dataUser = user;
+        console.log(this.dataUser);
+      }else if(user && user.photoURL){
+        this.dataUser = user;
+        console.log(this.dataUser);
       }else{
         this.router.navigate(['/Login']);
       }

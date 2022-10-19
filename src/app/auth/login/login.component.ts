@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { FirebaseErrorService } from 'src/app/services/firebase-error.service';
-import { GoogleAuthProvider, FacebookAuthProvider, GithubAuthProvider, TwitterAuthProvider } from '@angular/fire/auth';
+import { GoogleAuthProvider,FacebookAuthProvider,GithubAuthProvider,TwitterAuthProvider} from '@angular/fire/auth';
+
 
 @Component({
   selector: 'app-login',
@@ -49,29 +50,28 @@ export class LoginComponent implements OnInit {
   loginGoogle() {
     this.afAuth.signInWithPopup(new GoogleAuthProvider()).then(()=> this.router.navigate(['/Dashboard']));   
   }
-  loginFacebook() {
-    this.afAuth.signInWithPopup(new FacebookAuthProvider()).then((user) => {
-      const res= user.user;
-      this.router.navigate(['/Dashboard']);
-      console.log(res);
-
-    }).catch((error)=>{
-      console.log(error);
-    })
-  }
-  loginGithub() {
-    this.afAuth.signInWithPopup(new GithubAuthProvider()).then( (user) =>{
-      let res = user?.user;
+  loginFacebook(){
+    this.afAuth.signInWithPopup(new FacebookAuthProvider()).then((user)=>{
+      const res = user.user;
       console.log(res);
       this.router.navigate(['/Dashboard']);
     }).catch((error)=>{
       console.log(error);
     });
   }
-  loginTwitter() {
-    this.afAuth.signInWithPopup(new TwitterAuthProvider()).then((res)=> {
-      let user = res.user;
-      console.log(user);
+  loginGithub(){
+    this.afAuth.signInWithPopup(new GithubAuthProvider()).then((user)=>{
+      const res = user.user;
+      console.log(res);
+      this.router.navigate(['/Dashboard']);
+    }).catch((error)=>{
+      console.log(error);
+    });
+  }
+  loginTwitter(){
+    this.afAuth.signInWithPopup(new TwitterAuthProvider()).then((user)=>{
+      const res = user.user;
+      console.log(res);
       this.router.navigate(['/Dashboard']);
     }).catch((error)=>{
       console.log(error);
