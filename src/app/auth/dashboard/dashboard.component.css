@@ -23,19 +23,26 @@ background-attachment: fixed;
 background-size: cover;
 
 }
+img{
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  transform: translate(1300%, 200%);
+}
 h1{
   text-align: center;
   font-size: xxx-large;
   font-family: 'Patrick Hand', cursive;
   color: blueviolet;
-  transform: translate(0%,750%);
+  transform: translate(0%,450%);
 }
 h2{
   text-align: center;
   font-size: medium;
   font-family: 'Patrick Hand', cursive;
   color: blueviolet;
-  transform: translate(0%,500%);
+  transform: translate(0%,300%);
 }
 
 p{
@@ -43,7 +50,7 @@ p{
     font-size: large;
     font-family: 'Patrick Hand', cursive;
     color: blueviolet;
-    transform: translate(0%,1200%);
+    transform: translate(0%,700%);
 }
 button{
     width: 20%;
@@ -52,7 +59,7 @@ button{
     /* font-weight: bold; */
     background-color: #bcd8c1;
     border-radius: 5rem; 
-    transform: translate(200%, 900%);
+    transform: translate(200%, 500%);
     border: none;
     font-size: large;
     font-family: 'Patrick Hand', cursive;

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -9,6 +10,7 @@ import { Router } from '@angular/router';
 })
 export class DashboardComponent implements OnInit {
   dataUser:any;
+ 
 
   constructor(private afAuth: AngularFireAuth,
     private router: Router,) { }
