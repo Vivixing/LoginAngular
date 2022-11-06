@@ -8,13 +8,13 @@ import { RegisterComponent } from './auth/register/register.component';
 
 //Creo la ruta
 const routes: Routes = [
-  {path: '',component:LoginComponent},
+  {path: '',redirectTo: 'Login', pathMatch:'full'},
   {path: 'Login', component: LoginComponent},
   {path: 'Register', component: RegisterComponent},
   {path: 'RecuperarContraseña', component: RecordarPasswordComponent},
   {path: 'Dashboard', component: DashboardComponent},
   {path: 'CreateRegister', component:CreateRegisterComponent},
-  
+  {path:  '**', redirectTo: 'Login', pathMatch:'full' }
 ];
 
 @NgModule({

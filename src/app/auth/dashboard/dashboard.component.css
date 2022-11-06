@@ -90,7 +90,7 @@ button:hover{
 }
 
 .icon1, .icon2{
-  padding: 0px 30px;
+  padding: 0px 10px;
   transform: translate(2rem, 0rem);
   cursor: pointer;
 }
