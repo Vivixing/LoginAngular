@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
-*{
-  box-sizing: border-box;
-  width: 100%;
-  padding: none;
-  margin: none;
-}
+
 html,
 body {
   /* background: #505250a9; */
@@ -23,44 +18,63 @@ background-attachment: fixed;
 background-size: cover;
 
 }
+header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30px 10%;
+}
+.nav_info{
+  list-style: none;
+}
+.nav_info li{
+  display: inline-block;
+  padding: 0px 30px;
+}
 img{
   vertical-align: middle;
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  transform: translate(1300%, 200%);
+  /* transform: translate(1300%, 200%); */
 }
 h1{
+  /* top,right,botton, left */
+  padding: 0px 30px;
   text-align: center;
-  font-size: xxx-large;
+  font-size: x-large;
   font-family: 'Patrick Hand', cursive;
   color: blueviolet;
-  transform: translate(0%,450%);
+  /* transform: translate(0%,450%); */
 }
 h2{
   text-align: center;
   font-size: medium;
   font-family: 'Patrick Hand', cursive;
   color: blueviolet;
-  transform: translate(0%,300%);
+  /* transform: translate(0%,300%); */
 }
 
 p{
-    text-align: center;
-    font-size: large;
-    font-family: 'Patrick Hand', cursive;
-    color: blueviolet;
-    transform: translate(0%,700%);
+  text-align: center;
+  font-size: large;
+  font-family: 'Patrick Hand', cursive;
+  color: blueviolet;
+  /* transform: translate(0%,700%); */
 }
 button{
-    width: 20%;
-    display: block;
-    color:white;
-    /* font-weight: bold; */
-    background-color: #bcd8c1;
-    border-radius: 5rem; 
-    transform: translate(200%, 500%);
-    border: none;
-    font-size: large;
-    font-family: 'Patrick Hand', cursive;
+  padding: 9px 25px;
+  text-align: center;
+  color:white;
+  background-color: #bcd8c1;
+  border: none;
+  border-radius: 50px; 
+  cursor:pointer;
+  font-size: large;
+  font-family: 'Patrick Hand', cursive;
+  transition: all 0.3s ease 0s;
+  transform: translate(20rem, 0rem);
+}
+button:hover{
+  background-color: #2d833c;
 }

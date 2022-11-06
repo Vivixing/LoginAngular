@@ -1,8 +1,17 @@
 <body>
-    <h2>{{ dataUser?.email }}</h2>
-    <h2>{{ dataUser?.displayName }}</h2>
-    <img src="{{ dataUser?.photoURL }}" referrerpolicy="no-referrer" alt="profile">
-    <h1><strong>We Are Creative</strong></h1>
-    <p>We build HTML Template for your business</p>
-    <button type="button" (click)="logOut()">LOG OUT</button>
+    
+    <mat-toolbar>
+        <header>
+            <h1><strong>We Are Creative</strong></h1> 
+            <nav>
+                <ul class="nav_info">
+                    <li><img src="{{ dataUser?.photoURL }}" referrerpolicy="no-referrer" alt="profile"></li>
+                    <li><h2>{{ dataUser?.displayName }}</h2></li>
+                    <li><h2>{{ dataUser?.email }}</h2></li>
+                </ul>
+            </nav>         
+            <button type="button" (click)="logOut()">LOG OUT</button>
+        </header>
+    </mat-toolbar>
+                
 </body>
