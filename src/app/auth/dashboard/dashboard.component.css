@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap');
 
+
 html,
 body {
   /* background: #505250a9; */
@@ -73,8 +74,23 @@ button{
   font-size: large;
   font-family: 'Patrick Hand', cursive;
   transition: all 0.3s ease 0s;
-  transform: translate(20rem, 0rem);
+  transform: translate(15rem, 0rem);
 }
 button:hover{
   background-color: #2d833c;
+}
+
+.demo-table {
+  width: 50%;
+  transform: translate(20rem , 2rem);
+}
+
+.demo-button {
+  transform: translate(40rem, 1rem);
+}
+
+.icon1, .icon2{
+  padding: 0px 30px;
+  transform: translate(2rem, 0rem);
+  cursor: pointer;
 }

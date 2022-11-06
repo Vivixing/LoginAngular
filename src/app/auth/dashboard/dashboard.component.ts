@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
 
 
@@ -8,9 +9,19 @@ import { Router } from '@angular/router';
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
+
 export class DashboardComponent implements OnInit {
   dataUser:any;
- 
+  displayedColumns: string[] = ['position', 'name', 'email','age'];
+  dataSource = ELEMENT_DATA
+
+  addData() {
+    
+  }
+
+  removeData() {
+    
+  }
 
   constructor(private afAuth: AngularFireAuth,
     private router: Router,) { }
@@ -36,3 +47,15 @@ export class DashboardComponent implements OnInit {
     this.afAuth.signOut().then(()=> this.router.navigate(['/Login']));
   }
 }
+
+export interface PeriodicElement {
+  name: string;
+  position: number;
+  age: number;
+  email: string;
+}
+const ELEMENT_DATA: PeriodicElement[] = [
+  {position: 1, name: 'Hydrogen', email: 'H', age: 1.0079},
+  {position: 2, name: 'Helium',  email: 'He', age: 1.0079},
+  {position: 3, name: 'Lithium', email: 'Li', age: 1.0079},
+];

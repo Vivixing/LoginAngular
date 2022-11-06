@@ -15,9 +15,11 @@ import { MatCardModule } from '@angular/material/card';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatIconModule } from '@angular/material/icon';
 import {MatToolbarModule} from '@angular/material/toolbar';
+import {MatTableModule} from '@angular/material/table';
 import { ToastrModule } from 'ngx-toastr';//Animación Error y demás
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { CreateRegisterComponent } from './create-register/create-register.component';
 
 
 
@@ -26,7 +28,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     LoginComponent,
     RegisterComponent,
     RecordarPasswordComponent,
-    DashboardComponent
+    DashboardComponent,
+    CreateRegisterComponent
   ],
   imports: [
     CommonModule,
@@ -38,6 +41,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
     MatCardModule,
     MatTabsModule,
     MatIconModule,
+    MatTableModule,
     ReactiveFormsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ToastrModule.forRoot(),
