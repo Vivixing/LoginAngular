@@ -50,7 +50,12 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
-      
+    
+    <ul>
+        <li class="text" *ngFor="let item of items | async">
+          {{item.name}}
+        </li>
+    </ul>
       
                 
 </body>

@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { environment } from 'src/environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AuthRoutingModule } from './auth-routing.module';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
@@ -43,6 +44,7 @@ import { CreateRegisterComponent } from './create-register/create-register.compo
     MatIconModule,
     MatTableModule,
     ReactiveFormsModule,
+    AngularFirestoreModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     ToastrModule.forRoot(),
   ],

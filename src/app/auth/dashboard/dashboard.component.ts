@@ -1,7 +1,9 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -11,9 +13,11 @@ import { Router } from '@angular/router';
 })
 
 export class DashboardComponent implements OnInit {
+
   dataUser:any;
   displayedColumns: string[] = ['position', 'name', 'email','age'];
   dataSource = ELEMENT_DATA
+  items: Observable<any[]>;
 
   addData() {
     
@@ -24,7 +28,10 @@ export class DashboardComponent implements OnInit {
   }
 
   constructor(private afAuth: AngularFireAuth,
-    private router: Router,) { }
+    private router: Router,
+    firestore: AngularFirestore,) { 
+      this.items = firestore.collection('items').valueChanges();
+    }
 
   ngOnInit(): void {
     this.afAuth.currentUser.then(user =>{
