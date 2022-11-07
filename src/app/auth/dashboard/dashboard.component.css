@@ -80,17 +80,31 @@ button:hover{
   background-color: #2d833c;
 }
 
-.demo-table {
-  width: 50%;
-  transform: translate(20rem , 2rem);
-}
-
 .demo-button {
-  transform: translate(40rem, 1rem);
+  transform: translate(40rem, 0rem);
 }
 
 .icon1, .icon2{
   padding: 0px 10px;
   transform: translate(2rem, 0rem);
   cursor: pointer;
+}
+
+/* Tabla prueba */
+table {
+  text-align: center;
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  transform: translate(0rem , 2rem);
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
 }

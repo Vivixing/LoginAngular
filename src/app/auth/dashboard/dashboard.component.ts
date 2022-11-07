@@ -1,9 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore } from '@angular/fire/compat/firestore';
-import { MatTable } from '@angular/material/table';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 
 @Component({
@@ -15,16 +13,18 @@ import { Observable } from 'rxjs';
 export class DashboardComponent implements OnInit {
 
   dataUser:any;
-  displayedColumns: string[] = ['position', 'name', 'email','age'];
-  dataSource = ELEMENT_DATA
+  usuarios : any [] = [];
   
   constructor(private afAuth: AngularFireAuth,
     private router: Router,
+    private usuarioService: ClienteService
     ) { 
       
     }
 
   ngOnInit(): void {
+
+    this.getUsuarios(); 
     this.afAuth.currentUser.then(user =>{
       if(user && user.emailVerified){
         this.dataUser = user;
@@ -44,16 +44,18 @@ export class DashboardComponent implements OnInit {
   logOut(){
     this.afAuth.signOut().then(()=> this.router.navigate(['/Login']));
   }
+
+  getUsuarios(){
+    this.usuarioService.getUsuario().subscribe( data =>{
+      this.usuarios = [];
+      data.forEach((element: any) => {
+        this.usuarios.push({
+          id: element.payload.doc.id,
+          ...element.payload.doc.data()
+        })
+      });
+      console.log(this.usuarios);
+    })
+  }
 }
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  age: number;
-  email: string;
-}
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', email: 'H', age: 1.0079},
-  {position: 2, name: 'Helium',  email: 'He', age: 1.0079},
-  {position: 3, name: 'Lithium', email: 'Li', age: 1.0079},
-];

@@ -15,42 +15,26 @@
             <button type="button" (click)="logOut()">LOG OUT</button>
         </header>
     </mat-toolbar>
-
-    <div class="demo-button-container">
-        <button mat-raised-button  class="demo-button" routerLink="/CreateRegister">
-            <mat-icon>add</mat-icon>
-        </button>
-    </div>
-      
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
-        <!-- Position Column -->
-        <ng-container matColumnDef="position">
-          <th mat-header-cell *matHeaderCellDef>No.</th>
-          <td mat-cell *matCellDef="let element">{{element.position}}</td>
-        </ng-container>
-      
-        <!-- Name Column -->
-        <ng-container matColumnDef="name">
-          <th mat-header-cell *matHeaderCellDef>Name</th>
-          <td mat-cell *matCellDef="let element">{{element.name}}</td>
-        </ng-container>
-      
-        <!-- Email Column -->
-        <ng-container matColumnDef="email">
-          <th mat-header-cell *matHeaderCellDef>Email</th>
-          <td mat-cell *matCellDef="let element">{{element.email}}</td>
-        </ng-container>
-
-        <!-- Age Column -->
-        <ng-container matColumnDef="age">
-            <th mat-header-cell *matHeaderCellDef>Age</th>
-            <td mat-cell *matCellDef="let element">{{element.age}} <mat-icon class="icon1">create</mat-icon> <mat-icon class="icon2">clear</mat-icon></td>
-          </ng-container>
-      
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
     
+    <!-- Prueba tabla  -->
+    <table>
+        <tr>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Edad</th>
+          <th>Email</th>
+          <th>Teléfono</th>
+          <th><mat-icon class="icon1" routerLink="/CreateRegister">add_circle</mat-icon></th>
+        </tr>
+        <tr *ngFor="let persona of usuarios">
+          <td>{{persona.nombre }}</td>
+          <td>{{persona.apellido}}</td>
+          <td>{{persona.age}}</td>
+          <td>{{persona.email}}</td>
+          <td>{{persona.number}}</td>
+          <td><mat-icon class="icon1">create</mat-icon> <mat-icon class="icon2">clear</mat-icon></td>
+        </tr>
+    </table>
       
                 
 </body>
