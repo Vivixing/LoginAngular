@@ -17,20 +17,11 @@ export class DashboardComponent implements OnInit {
   dataUser:any;
   displayedColumns: string[] = ['position', 'name', 'email','age'];
   dataSource = ELEMENT_DATA
-  items: Observable<any[]>;
-
-  addData() {
-    
-  }
-
-  removeData() {
-    
-  }
-
+  
   constructor(private afAuth: AngularFireAuth,
     private router: Router,
-    firestore: AngularFirestore,) { 
-      this.items = firestore.collection('items').valueChanges();
+    ) { 
+      
     }
 
   ngOnInit(): void {

@@ -4,6 +4,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { FirebaseErrorService } from 'src/app/services/firebase-error.service';
+import { ClienteService } from 'src/app/services/cliente.service';
 
 @Component({
   selector: 'app-create-register',
@@ -17,34 +18,55 @@ export class CreateRegisterComponent implements OnInit {
     private afAuth: AngularFireAuth,
     private toastr: ToastrService,
     private router: Router,
+    private usuarioService: ClienteService,
     private firebaseError: FirebaseErrorService) { 
       this.registrarUsuario = this.fb.group({
         apellido: ['', Validators.required],
         nombre: ['', Validators.required],
         email: ['', [Validators.required,Validators.email]],
+        age:['', Validators.required],
         number:['', Validators.required],
         address:['',Validators.required],
-        age:['', Validators.required],
         contraseña: ['', [Validators.required,Validators.minLength(7)]],
+        contraseñarepe: ['', [Validators.required,Validators.minLength(7)]],
       })
     }
 
+    //Validators.pattern('^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%*#?&].{7,}$')
   ngOnInit(): void {
   }
 
   registrar() {
-    const apellido = this.registrarUsuario.value.apellido;
-    const nombre = this.registrarUsuario.value.nombre;
-    const email = this.registrarUsuario.value.email;
-    const contraseña = this.registrarUsuario.value.contraseña;
 
+    const email= this.registrarUsuario.value.email;
+    const contraseña= this.registrarUsuario.value.contraseña;
 
+    const crearUsuario: any = {
+      nombre : this.registrarUsuario.value.nombre,
+      apellido : this.registrarUsuario.value.apellido,
+      email : this.registrarUsuario.value.email,
+      age: this.registrarUsuario.value.age,
+      number : this.registrarUsuario.value.number,
+      address: this.registrarUsuario.value.address,
+      contraseña : this.registrarUsuario.value.contraseña,   
+
+      
+    }
     this.afAuth.createUserWithEmailAndPassword(email, contraseña).then((user) => {
-      //Si se da como exitoso el registro entonces redirecciono al Dashboard
+      //Si se da como exitoso el registro entonces redirecciono al Login
       this.verificarEmail();
       //console.log(user);
     }).catch((error) => {
       //console.log(error);
+      this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
+    })
+
+    this.usuarioService.agregarUsuario(crearUsuario).then(()=>{
+      this.toastr.info('Registro del ussuario con éxito!', 'Usuario Creado');
+      this.router.navigate(['/Dashboard']);
+      this.verificarEmail();
+    }).catch(error =>{
+      console.log(error);
       this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
     })
   }

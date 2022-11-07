@@ -17,7 +17,7 @@
     </mat-toolbar>
 
     <div class="demo-button-container">
-        <button mat-raised-button (click)="addData()" class="demo-button" routerLink="/CreateRegister">
+        <button mat-raised-button  class="demo-button" routerLink="/CreateRegister">
             <mat-icon>add</mat-icon>
         </button>
     </div>
@@ -51,11 +51,6 @@
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
     </table>
     
-    <ul>
-        <li class="text" *ngFor="let item of items | async">
-          {{item.name}}
-        </li>
-    </ul>
       
                 
 </body>
