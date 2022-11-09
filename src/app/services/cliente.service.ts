@@ -18,5 +18,10 @@ export class ClienteService {
   getUsuario() : Observable<any> {
     return this.firestore.collection('usuarios').snapshotChanges();
   }
+
+  //Eliminar Usuario  
+  eliminarUsuario(id:string) : Promise<any> {
+    return this.firestore.collection('usuarios').doc(id).delete();
+  }
 }
 

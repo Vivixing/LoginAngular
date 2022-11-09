@@ -32,7 +32,7 @@
           <td>{{persona.age}}</td>
           <td>{{persona.email}}</td>
           <td>{{persona.number}}</td>
-          <td><mat-icon class="icon1">create</mat-icon> <mat-icon class="icon2">clear</mat-icon></td>
+          <td><mat-icon class="icon1">create</mat-icon> <mat-icon (click)="eliminarUsuarios(persona.id)" class="icon2">clear</mat-icon></td>
         </tr>
     </table>
       

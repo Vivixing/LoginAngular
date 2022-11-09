@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { ClienteService } from 'src/app/services/cliente.service';
 
 
@@ -17,7 +18,8 @@ export class DashboardComponent implements OnInit {
   
   constructor(private afAuth: AngularFireAuth,
     private router: Router,
-    private usuarioService: ClienteService
+    private usuarioService: ClienteService,
+    private toastr : ToastrService
     ) { 
       
     }
@@ -57,6 +59,19 @@ export class DashboardComponent implements OnInit {
       });
       console.log(this.usuarios);
     })
+  }
+
+  //Eiminar usuarios
+  eliminarUsuarios(id:string) : void{
+    const confirmacion = confirm('Estás seguro que deseas eliminar este Usuario:')
+    if(confirmacion){
+      this.usuarioService.eliminarUsuario(id).then(()=>{
+        this.toastr.error('Usuario eliminado con éxito ', 'Eliminar Usuario');
+      }).catch(error=>{
+        console.log(error);
+      })
+    }
+    
   }
 }
 
