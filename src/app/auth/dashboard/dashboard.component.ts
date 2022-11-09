@@ -32,10 +32,10 @@ export class DashboardComponent implements OnInit {
       }else if(user && user.email){
         this.dataUser = user;
         console.log(this.dataUser);
-      }else if(user && user.photoURL){
+      }/*else if(user && user.photoURL){
         this.dataUser = user;
         console.log(this.dataUser);
-      }else{
+      }*/else{
         this.router.navigate(['/Login']);
       }
     })
@@ -45,6 +45,7 @@ export class DashboardComponent implements OnInit {
     this.afAuth.signOut().then(()=> this.router.navigate(['/Login']));
   }
 
+  //Recorre cada usuario registrado
   getUsuarios(){
     this.usuarioService.getUsuario().subscribe( data =>{
       this.usuarios = [];

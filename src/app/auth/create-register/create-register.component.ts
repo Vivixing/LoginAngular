@@ -13,6 +13,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 })
 export class CreateRegisterComponent implements OnInit {
   registrarUsuario: FormGroup;
+  dataUser:any;
 
   constructor(private fb: FormBuilder,
     private afAuth: AngularFireAuth,
@@ -41,6 +42,18 @@ export class CreateRegisterComponent implements OnInit {
     const email= this.registrarUsuario.value.email;
     const contraseña= this.registrarUsuario.value.contraseña;
 
+    this.afAuth.createUserWithEmailAndPassword(email, contraseña).then((user) => {
+      //Si se da como exitoso el registro entonces redirecciono al dashboard
+      this.verificarEmail();
+      this.pushUsuario();
+      //console.log(user);
+    }).catch((error) => {
+      //console.log(error);
+      this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
+    })
+  }
+
+  pushUsuario(){
     const crearUsuario: any = {
       nombre : this.registrarUsuario.value.nombre,
       apellido : this.registrarUsuario.value.apellido,
@@ -49,22 +62,10 @@ export class CreateRegisterComponent implements OnInit {
       number : this.registrarUsuario.value.number,
       address: this.registrarUsuario.value.address,
       contraseña : this.registrarUsuario.value.contraseña,   
-
-      
     }
-    this.afAuth.createUserWithEmailAndPassword(email, contraseña).then((user) => {
-      //Si se da como exitoso el registro entonces redirecciono al Login
-      this.verificarEmail();
-      //console.log(user);
-    }).catch((error) => {
-      //console.log(error);
-      this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
-    })
-
+    //Para Crear el Usuario
     this.usuarioService.agregarUsuario(crearUsuario).then(()=>{
-      this.toastr.info('Registro del ussuario con éxito!', 'Usuario Creado');
-      this.router.navigate(['/Dashboard']);
-      this.verificarEmail();
+      this.toastr.success('Registro del usuario con éxito!', 'Usuario Creado');
     }).catch(error =>{
       console.log(error);
       this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
@@ -73,7 +74,7 @@ export class CreateRegisterComponent implements OnInit {
 
   verificarEmail(){
     this.afAuth.currentUser.then(user=>user?.sendEmailVerification())
-                            .then(()=>{
+                            .then((user)=>{
                               this.toastr.info('Le enviamos un correo para su verifación', 'Verificar Correo');
                               this.router.navigate(['/Dashboard']);
                             })
