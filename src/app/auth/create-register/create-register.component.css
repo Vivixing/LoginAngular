@@ -9,20 +9,14 @@
 
 html,
 body {
-  /* background: #505250a9; */
-
   /* Ubicación de la imagen */
   background-image: url('https://images.pexels.com/photos/434337/pexels-photo-434337.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-  /* Para dejar la imagen de fondo centrada, vertical y
-horizontalmente */
   background-position: center center;
-  /* Para que la imagen de fondo no se repita */
   background-repeat: no-repeat;
-  /* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
   background-attachment: fixed;
-  /* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
   background-size: cover;
-
+  overflow: scroll;
+  background-color: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);;
 }
 
 /* Tarjeta */
@@ -43,6 +37,7 @@ horizontalmente */
 
 .title {
   margin-top: 18%;
+  text-align: center;
 }
 
 .example-header-image {
@@ -86,21 +81,3 @@ horizontalmente */
   color: red;
 }
 
-@media screen and (min-width:1200px) {
-
-  .example-header-image {
-    width: 43px;
-    max-width: 400px;
-    height: auto;
-  }
-
-  body {
-    background-position: center center;
-    /* Para que la imagen de fondo no se repita */
-    background-repeat: no-repeat;
-    /* La imagen se fija en la ventana de visualización para que la altura de la imagen no supere a la del contenido */
-    background-attachment: fixed;
-    /* La imagen de fondo se reescala automáticamente con el cambio del ancho de ventana del navegador */
-    background-size: 100%;
-  }
-}

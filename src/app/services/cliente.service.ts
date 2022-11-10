@@ -23,5 +23,15 @@ export class ClienteService {
   eliminarUsuario(id:string) : Promise<any> {
     return this.firestore.collection('usuarios').doc(id).delete();
   }
+
+  //Consumir los datos por el id a editar
+  getUsuarioEmail(id:string) : Observable<any>{
+    return this.firestore.collection('usuarios').doc(id).snapshotChanges();
+  }
+
+  //Para editar el Usuario
+  actualizarUsuario(id:string, data: any) : Promise<any> {
+    return this.firestore.collection('usuarios').doc(id).update(data);
+  }
 }
 

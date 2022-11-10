@@ -3,7 +3,6 @@
     <mat-card class="example-card">
   
       <mat-card-header>
-        <div mat-card-avatar class="example-header-image"></div>
         <mat-card-title class="title">CREATE REGISTER</mat-card-title>
       </mat-card-header>
   
@@ -11,7 +10,7 @@
         <!--formulario Registro -->
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Last Name</mat-label>
-          <input matInput formControlName="apellido" placeholder="Ex. Londoño Franco" name="nameregister">
+          <input matInput formControlName="apellido" placeholder="Ex. Londoño Franco" name="apellido">
           <span *ngIf="registrarUsuario.get('apellido')?.hasError('required') && registrarUsuario.get('apellido')?.touched" class="text-danger">
             El <strong>apellido</strong> es requerido
           </span>
@@ -20,7 +19,7 @@
 
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Name</mat-label>
-          <input matInput formControlName="nombre" placeholder="Ex. Esteban" name="nameregister">
+          <input matInput formControlName="nombre" placeholder="Ex. Esteban" name="nombre">
           <span *ngIf="registrarUsuario.get('nombre')?.hasError('required') && registrarUsuario.get('nombre')?.touched" class="text-danger">
             El <strong>nombre</strong> es requerido
           </span>
@@ -43,7 +42,7 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Age</mat-label>
             <input matInput type="number" formControlName="age" placeholder="Ex. 12"
-              name="numberregister">
+              name="age">
             <span *ngIf="registrarUsuario.get('age')?.hasError('required') && registrarUsuario.get('age')?.touched" class="text-danger">
                 La <strong> edad </strong> es requerida
             </span>
@@ -52,7 +51,7 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Phone Number</mat-label>
             <input matInput type="number" formControlName="number" placeholder="Ex. 3138731987"
-              name="numberregister">
+              name="number">
             <span *ngIf="registrarUsuario.get('number')?.hasError('required') && registrarUsuario.get('number')?.touched" class="text-danger">
                 El <strong> número de celular </strong> es requerido
             </span>
@@ -61,7 +60,7 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Address</mat-label>
             <input matInput type="text" formControlName="address" placeholder="Ex. Av 8 cll 16"
-              name="passwordregister">
+              name="address">
             <span *ngIf="registrarUsuario.get('address')?.hasError('required') && registrarUsuario.get('address')?.touched" class="text-danger">
                 La <strong> dirección </strong> es requerida
             </span>
@@ -70,7 +69,7 @@
         <mat-form-field class="example-full-width" appearance="fill">
           <mat-label>Password</mat-label>
           <input matInput type="password" formControlName="contraseña" placeholder="Ex. 1234abcjs"
-            name="passwordregister">
+            name="contraseña">
             <span *ngIf="registrarUsuario.get('contraseña')?.hasError('required') && registrarUsuario.get('contraseña')?.touched" class="text-danger">
               La <strong>contraseña</strong> es requerida
             </span>
@@ -85,7 +84,7 @@
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Confirm your Password</mat-label>
             <input matInput type="password" formControlName="contraseñarepe" placeholder="Ex. 1234abcjs"
-              name="passwordregister">
+              name="contraseña2">
               <span *ngIf="registrarUsuario.get('contraseñarepe')?.hasError('required') && registrarUsuario.get('contraseñarepe')?.touched" class="text-danger">
                 La <strong>contraseña</strong> es requerida
               </span>
@@ -104,7 +103,7 @@
         <mat-card-actions>
           <section>
             <div class="example-button-row">
-              <button mat-button color="#ffffff" [disabled]="registrarUsuario.invalid" type="submit">CREATE</button>
+              <button mat-button color="#ffffff" [disabled]="registrarUsuario.invalid" type="submit">SUBMIT</button>
             </div>
           </section>
         </mat-card-actions>

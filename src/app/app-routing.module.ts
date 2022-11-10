@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: 'RecuperarContraseña', component: RecordarPasswordComponent},
   {path: 'Dashboard', component: DashboardComponent},
   {path: 'CreateRegister', component:CreateRegisterComponent},
+  {path: 'EditRegister/:id', component:CreateRegisterComponent},//"/:email" y se reutiliza el componente crear
   {path:  '**', redirectTo: 'Login', pathMatch:'full' }
 ];
 
