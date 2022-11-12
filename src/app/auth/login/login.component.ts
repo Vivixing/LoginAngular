@@ -37,13 +37,11 @@ export class LoginComponent implements OnInit {
       if (user.user?.emailVerified) {
         this.toastr.success(this.loginUsuario.value.email, 'Usuario Login Exitoso');
         this.router.navigate(['/Dashboard']);
-        //console.log(user);
       } else {
         this.toastr.warning(this.loginUsuario.value.email, 'Debes Verificar tu correo');
       }
     }).catch((error) => {
       this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
-      console.log(error);
     })
   }
 
@@ -51,33 +49,24 @@ export class LoginComponent implements OnInit {
     this.afAuth.signInWithPopup(new GoogleAuthProvider()).then(()=> this.router.navigate(['/Dashboard']));   
   }
   loginFacebook(){
-    this.afAuth.signInWithPopup(new FacebookAuthProvider()).then((user)=>{
-      const res = user.user;
-      console.log(res);
+    this.afAuth.signInWithPopup(new FacebookAuthProvider()).then(()=>{
       this.router.navigate(['/Dashboard']);
     }).catch((error)=>{
       this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
-      console.log(error);
     });
   }
   loginGithub(){
-    this.afAuth.signInWithPopup(new GithubAuthProvider()).then((user)=>{
-      const res = user.user;
-      console.log(res);
+    this.afAuth.signInWithPopup(new GithubAuthProvider()).then(()=>{
       this.router.navigate(['/Dashboard']);
     }).catch((error)=>{
       this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
-      console.log(error);
     });
   }
   loginTwitter(){
-    this.afAuth.signInWithPopup(new TwitterAuthProvider()).then((user)=>{
-      const res = user.user;
-      console.log(res);
+    this.afAuth.signInWithPopup(new TwitterAuthProvider()).then(()=>{
       this.router.navigate(['/Dashboard']);
     }).catch((error)=>{
       this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
-      console.log(error);
     });
   }
 }

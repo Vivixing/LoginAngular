@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AngularFireAuth, USE_EMULATOR } from '@angular/fire/compat/auth';
+import { AngularFireAuth} from '@angular/fire/compat/auth';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseErrorService } from 'src/app/services/firebase-error.service';
@@ -41,10 +41,8 @@ export class CreateRegisterComponent implements OnInit {
       })
       //Acceder al id
       this.id = this.aRoute.snapshot.paramMap.get('id');
-      console.log(this.id);
     }
 
-    //Validators.pattern('^(?=.[A-Za-z])(?=.\d)(?=.[@$!%#?&])[A-Za-z\d@$!%*#?&].{7,}$')
   ngOnInit(): void {
     //Cuando se inicializa el componente
     this.afAuth.currentUser.then(user =>{
@@ -86,7 +84,6 @@ export class CreateRegisterComponent implements OnInit {
     }
   }
   
-
   pushUsuario(){
 
     const crearUsuario: any = {
@@ -107,7 +104,6 @@ export class CreateRegisterComponent implements OnInit {
       this.verificarEmail();
  
     }).catch(error =>{
-      console.log(error);
       this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
     })
   }

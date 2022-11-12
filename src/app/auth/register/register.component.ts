@@ -35,8 +35,6 @@ export class RegisterComponent implements OnInit {
 
   //Metodos
   registrar() {
-    const apellido = this.registrarUsuario.value.apellido;
-    const nombre = this.registrarUsuario.value.nombre;
     const email = this.registrarUsuario.value.email;
     const contraseña = this.registrarUsuario.value.contraseña;
 

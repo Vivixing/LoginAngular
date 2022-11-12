@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClienteService } from 'src/app/services/cliente.service';
+import { FirebaseErrorService } from 'src/app/services/firebase-error.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -19,7 +20,8 @@ export class DashboardComponent implements OnInit {
     private router: Router,
     private usuarioService: ClienteService,
     private toastr : ToastrService,
-    private ngZone: NgZone
+    private ngZone: NgZone,
+    private firebaseError: FirebaseErrorService
     ) { 
       
     }
@@ -53,7 +55,6 @@ export class DashboardComponent implements OnInit {
           ...element.payload.doc.data()
         })
       });
-      console.log(this.usuarios);
     })
   }
   //Eiminar usuarios
@@ -64,7 +65,7 @@ export class DashboardComponent implements OnInit {
         this.toastr.success('Usuario eliminado con éxito ', 'Eliminar Usuario');
         this.afAuth
       }).catch(error=>{
-        console.log(error);
+        this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
       })
     }
     
