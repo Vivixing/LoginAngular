@@ -30,10 +30,8 @@ export class DashboardComponent implements OnInit {
     this.afAuth.currentUser.then(user =>{
       if(user && user.emailVerified){
         this.dataUser = user;
-        console.log(this.dataUser);
       }else if(user && user.email){
         this.dataUser = user;
-        console.log(this.dataUser);
       }/*else if(user && user.photoURL){
         this.dataUser = user;
         console.log(this.dataUser);
@@ -66,7 +64,8 @@ export class DashboardComponent implements OnInit {
     const confirmacion = confirm('Estás seguro que deseas eliminar este Usuario:')
     if(confirmacion){
       this.usuarioService.eliminarUsuario(id).then(()=>{
-        this.toastr.error('Usuario eliminado con éxito ', 'Eliminar Usuario');
+        this.toastr.success('Usuario eliminado con éxito ', 'Eliminar Usuario');
+        this.afAuth
       }).catch(error=>{
         console.log(error);
       })

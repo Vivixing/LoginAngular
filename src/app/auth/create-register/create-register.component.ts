@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { AngularFireAuth, USE_EMULATOR } from '@angular/fire/compat/auth';
 import { ToastrService } from 'ngx-toastr';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FirebaseErrorService } from 'src/app/services/firebase-error.service';
@@ -14,7 +14,7 @@ import { ClienteService } from 'src/app/services/cliente.service';
 export class CreateRegisterComponent implements OnInit {
   registrarUsuario: FormGroup;
   //tipo string cuando lo editemos y null cuando lo creemos
-  id: string | null; 
+  id: string | null;  
 
   constructor(private fb: FormBuilder,
     private afAuth: AngularFireAuth,
@@ -51,25 +51,32 @@ export class CreateRegisterComponent implements OnInit {
   }
 
   registrar() {
-
+    const user =this.afAuth.credential;
     const email= this.registrarUsuario.value.email;
     const contraseña= this.registrarUsuario.value.contraseña;
 
-    this.afAuth.createUserWithEmailAndPassword(email, contraseña).then(() => {
-      this.verificarEmail();
-    }).catch((error) => {
-      this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
-    })
-
-    //Codicional para saber si edito o mando la creación del Usuario
-    if(this.id === null){
-      this.pushUsuario();
+    if(user !== email){
+      this.afAuth.createUserWithEmailAndPassword(email, contraseña).then(() => {
+        //Codicional para Crear Usuario
+        if(this.id === null){
+          this.pushUsuario();
+        }
+      }).catch((error) => {
+        this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
+      })
     }else{
+      this.toastr.error('Credencial Existente', 'Error');
+    }
+
+    //Codicional para editar
+    if(this.id !== null){
       this.editarUsuario(this.id);
     }
   }
+  
 
   pushUsuario(){
+
     const crearUsuario: any = {
       nombre : this.registrarUsuario.value.nombre,
       apellido : this.registrarUsuario.value.apellido,
@@ -81,8 +88,12 @@ export class CreateRegisterComponent implements OnInit {
       contraseñarepe : this.registrarUsuario.value.contraseñarepe
     }
     //Para Crear el Usuario
-    this.usuarioService.agregarUsuario(crearUsuario).then(()=>{
+    this.usuarioService.agregarUsuario(crearUsuario).then((user)=>{
+  
       this.toastr.success('Registro del usuario con éxito!', 'Usuario Creado');
+      this.router.navigate(['/Dashboard']);
+      this.verificarEmail();
+ 
     }).catch(error =>{
       console.log(error);
       this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
@@ -93,7 +104,6 @@ export class CreateRegisterComponent implements OnInit {
     this.afAuth.currentUser.then(user=>user?.sendEmailVerification())
                             .then(()=>{
                               this.toastr.info('Le enviamos un correo para su verifación', 'Verificar Correo');
-                              this.router.navigate(['/Dashboard']);
                             })
   }
 
@@ -132,4 +142,6 @@ export class CreateRegisterComponent implements OnInit {
       })
     }
   }
+
+  
 }
