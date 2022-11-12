@@ -1,9 +1,8 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild,NgZone} from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { ClienteService } from 'src/app/services/cliente.service';
-
 
 @Component({
   selector: 'app-dashboard',
@@ -19,26 +18,25 @@ export class DashboardComponent implements OnInit {
   constructor(private afAuth: AngularFireAuth,
     private router: Router,
     private usuarioService: ClienteService,
-    private toastr : ToastrService
+    private toastr : ToastrService,
+    private ngZone: NgZone
     ) { 
       
     }
 
-  ngOnInit(): void {
+  ngOnInit(): void{
 
     this.getUsuarios(); 
-    this.afAuth.currentUser.then(user =>{
-      if(user && user.emailVerified){
-        this.dataUser = user;
-      }else if(user && user.email){
-        this.dataUser = user;
-      }/*else if(user && user.photoURL){
-        this.dataUser = user;
-        console.log(this.dataUser);
-      }*/else{
+    this.afAuth.user.subscribe(user=>{
+      if(user){
+        this.ngZone.run(()=>{
+          this.dataUser = user;
+        })
+      }else{
         this.router.navigate(['/Login']);
       }
     })
+    /*NgZone nos ayuda a entrar en la zona de Angular. Esto es útil cuando utilizamos funcionalidad que nos ha sacado del contexto de ejecución de Angular y necesitamos volver al mismo. Por ejemplo: Cuando utilizamos algunas librerías que hacen llamados HTTP, por un tema de velocidad, estas se salen de la zona de Angular, luego, cuando se ejecuta su callback, necesitamos utilizar NgZone para volver a entrar a la zona de Angular para poder hacer algo desde nuestra aplicación de Angular en el callback.*/
   }
 
   logOut(){
@@ -58,10 +56,9 @@ export class DashboardComponent implements OnInit {
       console.log(this.usuarios);
     })
   }
-
   //Eiminar usuarios
   eliminarUsuarios(id:string) : void{
-    const confirmacion = confirm('Estás seguro que deseas eliminar este Usuario:')
+    const confirmacion = confirm('¿Estás seguro que deseas eliminar este Usuario?')
     if(confirmacion){
       this.usuarioService.eliminarUsuario(id).then(()=>{
         this.toastr.success('Usuario eliminado con éxito ', 'Eliminar Usuario');

@@ -76,21 +76,21 @@
             <span *ngIf="registrarUsuario.get('contraseña')?.hasError('minlength') && registrarUsuario.get('contraseña')?.touched" class="text-danger">
               La <strong>contraseña</strong> requeriere mínimo de 7 caracteres
             </span>
-            <!-- <span *ngIf="registrarUsuario.get('contraseña')?.hasError('pattern') && registrarUsuario.get('contraseña')?.touched" class="text-danger">
+            <span *ngIf="registrarUsuario.get('contraseña')?.hasError('pattern') && registrarUsuario.get('contraseña')?.touched" class="text-danger">
               La <strong>contraseña</strong> requeriere mínimo una letra, un número y un caracter especial
-            </span> -->
+            </span>
           
         </mat-form-field>
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Confirm your Password</mat-label>
             <input matInput type="password" formControlName="contraseñarepe" placeholder="Ex. 1234abcjs"
               name="contraseña2">
-              <span *ngIf="registrarUsuario.get('contraseñarepe')?.hasError('required') && registrarUsuario.get('contraseñarepe')?.touched" class="text-danger">
+              <!-- <span *ngIf="registrarUsuario.get('contraseñarepe')?.hasError('required') && registrarUsuario.get('contraseñarepe')?.touched" class="text-danger">
                 La <strong>contraseña</strong> es requerida
               </span>
               <span *ngIf="registrarUsuario.get('contraseñarepe')?.hasError('minlength') && registrarUsuario.get('contraseñarepe')?.touched" class="text-danger">
                 La <strong>contraseña</strong> requeriere mínimo de 7 caracteres
-              </span>
+              </span> -->
               <!-- <span *ngIf="registrarUsuario.get('contraseñarepe')?.hasError('pattern') && registrarUsuario.get('contraseñarepe')?.touched" class="text-danger">
                 La <strong>contraseña</strong> requeriere mínimo una letra, un número y un caracter especial
               </span> -->

@@ -30,8 +30,14 @@ export class CreateRegisterComponent implements OnInit {
         age:['', Validators.required],
         number:['', Validators.required],
         address:['',Validators.required],
-        contraseña: ['', [Validators.required,Validators.minLength(7)]],
-        contraseñarepe: ['', [Validators.required,Validators.minLength(7)]],
+        contraseña: ['', [
+          Validators.required,
+          Validators.minLength(7),
+          Validators.pattern(/[a-z]/),
+          Validators.pattern(/[0-9]/),
+          Validators.pattern(/[!@#$]/),
+        ]],
+        contraseñarepe: ['',Validators.required],
       })
       //Acceder al id
       this.id = this.aRoute.snapshot.paramMap.get('id');
@@ -54,7 +60,13 @@ export class CreateRegisterComponent implements OnInit {
     const user =this.afAuth.credential;
     const email= this.registrarUsuario.value.email;
     const contraseña= this.registrarUsuario.value.contraseña;
+    const contraseñarepe = this.registrarUsuario.value.contraseñarepe;
 
+    //Validación misma contraseña 
+    if(contraseña !== contraseñarepe){
+      this.toastr.error('Las contraseñas no coinciden', 'Error Contraseñas');
+      return;
+    }
     if(user !== email){
       this.afAuth.createUserWithEmailAndPassword(email, contraseña).then(() => {
         //Codicional para Crear Usuario
