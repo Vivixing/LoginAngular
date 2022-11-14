@@ -28,7 +28,7 @@ export class CreateRegisterComponent implements OnInit {
         nombre: ['', Validators.required],
         email: ['', [Validators.required,Validators.email]],
         age:['', Validators.required],
-        number:['', Validators.required],
+        number:['',Validators.required],
         address:['',Validators.required],
         contraseña: ['', [
           Validators.required,

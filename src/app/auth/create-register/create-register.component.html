@@ -37,19 +37,19 @@
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Age</mat-label>
-            <input matInput type="number" formControlName="age" placeholder="Ex. 12"
+            <input matInput type="number" min="1" maxlength="2" max="93" formControlName="age" placeholder="Ex. 12"
               name="age">
             <span *ngIf="registrarUsuario.get('age')?.hasError('required') && registrarUsuario.get('age')?.touched" class="text-danger">
-                La <strong> edad </strong> es requerida
+                La <strong> edad </strong> es requerida, como máximo dos digitos y ambos positivos, edad mínima de 93 años de edad
             </span>
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
             <mat-label>Phone Number</mat-label>
-            <input matInput type="number" formControlName="number" placeholder="Ex. 3138731987"
+            <input matInput type="number" min="1" max="9999999999" formControlName="number" placeholder="Ex. 3138731987"
               name="number">
             <span *ngIf="registrarUsuario.get('number')?.hasError('required') && registrarUsuario.get('number')?.touched" class="text-danger">
-                El <strong> número de celular </strong> es requerido
+                El <strong> número de celular </strong> es requerido con 10 digitos como máximo y positivos
             </span>
         </mat-form-field>
 

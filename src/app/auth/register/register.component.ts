@@ -56,9 +56,10 @@ export class RegisterComponent implements OnInit {
                               this.router.navigate(['/Login']);
                             })
   }
+  
 
   registroGoogle(){
-    this.afAuth.signInWithPopup(new GoogleAuthProvider()).then(()=> this.router.navigate(['/Dashboard']));
+    this.afAuth.signInWithPopup(new GoogleAuthProvider()).then(()=> {this.router.navigate(['/Dashboard'])});
   }
   registroFacebook(){
     this.afAuth.signInWithPopup(new FacebookAuthProvider()).then(()=> this.router.navigate(['/Dashboard'])).catch((error)=>{
