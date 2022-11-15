@@ -38,6 +38,7 @@ export class CreateRegisterComponent implements OnInit {
           Validators.pattern(/[!@#$]/),
         ]],
         contraseñarepe: ['',Validators.required],
+        image: ['',Validators.required],
       })
       //Acceder al id
       this.id = this.aRoute.snapshot.paramMap.get('id');
@@ -72,11 +73,12 @@ export class CreateRegisterComponent implements OnInit {
           this.pushUsuario();
         }
       }).catch((error) => {
-        this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
+        this.toastr.warning('Credencial Existente', 'Error');
+        //this.toastr.error(this.firebaseError.codeError(error.code), 'Error');
       })
-    }else{
+    }/*else{
       this.toastr.error('Credencial Existente', 'Error');
-    }
+    }*/
 
     //Codicional para editar
     if(this.id !== null){
@@ -94,10 +96,11 @@ export class CreateRegisterComponent implements OnInit {
       number : this.registrarUsuario.value.number,
       address: this.registrarUsuario.value.address,
       contraseña : this.registrarUsuario.value.contraseña,
-      contraseñarepe : this.registrarUsuario.value.contraseñarepe
+      contraseñarepe : this.registrarUsuario.value.contraseñarepe,
+      image: this.registrarUsuario.value.image
     }
     //Para Crear el Usuario
-    this.usuarioService.agregarUsuario(crearUsuario).then((user)=>{
+    this.usuarioService.agregarUsuario(crearUsuario).then(()=>{
   
       this.toastr.success('Registro del usuario con éxito!', 'Usuario Creado');
       this.router.navigate(['/Dashboard']);
@@ -124,7 +127,8 @@ export class CreateRegisterComponent implements OnInit {
       number : this.registrarUsuario.value.number,
       address: this.registrarUsuario.value.address,
       contraseña : this.registrarUsuario.value.contraseña,
-      contraseñarepe : this.registrarUsuario.value.contraseñarepe
+      contraseñarepe : this.registrarUsuario.value.contraseñarepe,
+      image: this.registrarUsuario.value.image
     }
 
     this.usuarioService.actualizarUsuario(id,actualizarUsuario).then(()=>{
@@ -146,6 +150,7 @@ export class CreateRegisterComponent implements OnInit {
           address: data.payload.data()['address'],
           contraseña : data.payload.data()['contraseña'], 
           contraseñarepe : data.payload.data()['contraseñarepe'], 
+          image: data.payload.data()['image']
         })
       })
     }

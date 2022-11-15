@@ -7,7 +7,7 @@
             <h1><strong>We Are Creative</strong></h1> 
             <nav>
                 <ul class="nav_info">
-                    <li><img src="{{ dataUser?.photoURL }}" referrerpolicy="no-referrer" alt="profile"></li>
+                    <li><img src="{{ dataUser?.photoURL}}" referrerpolicy="no-referrer" alt="profile"></li>
                     <li><h2>{{ dataUser?.displayName }}</h2></li>
                     <li><h2>{{ dataUser?.email }}</h2></li>
                 </ul>
@@ -19,6 +19,7 @@
     <!-- Prueba tabla  -->
     <table>
         <tr>
+          <th>Perfil</th>
           <th>Nombre</th>
           <th>Apellido</th>
           <th>Edad</th>
@@ -27,6 +28,7 @@
           <th><mat-icon class="icon1" routerLink="/CreateRegister">add_circle</mat-icon></th>
         </tr>
         <tr *ngFor="let persona of usuarios">
+          <td><img src="{{persona.image}}" referrerpolicy="no-referrer" alt="profile"></td>
           <td>{{persona.nombre }}</td>
           <td>{{persona.apellido}}</td>
           <td>{{persona.age}}</td>

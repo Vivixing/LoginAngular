@@ -3,7 +3,7 @@
     <mat-card class="example-card">
   
       <mat-card-header>
-        <mat-card-title class="title">CREATE REGISTER</mat-card-title>
+        <mat-card-title class="title">CREATE / UPDATE REGISTER</mat-card-title>
       </mat-card-header>
   
       <form (ngSubmit)="registrar()" [formGroup]="registrarUsuario" class="example-form">
@@ -40,7 +40,7 @@
             <input matInput type="number" min="1" maxlength="2" max="93" formControlName="age" placeholder="Ex. 12"
               name="age">
             <span *ngIf="registrarUsuario.get('age')?.hasError('required') && registrarUsuario.get('age')?.touched" class="text-danger">
-                La <strong> edad </strong> es requerida, como máximo dos digitos y ambos positivos, edad mínima de 93 años de edad
+                La <strong> edad </strong> es requerida, como máximo dos digitos y ambos positivos, edad máxima de 93 años de edad
             </span>
         </mat-form-field>
 
@@ -84,7 +84,11 @@
         </mat-form-field>
 
         <mat-form-field class="example-full-width" appearance="fill">
-          <input matInput type="file"  name="pictureRegister">
+          <mat-label>Image Profile</mat-label>
+          <input matInput type="text" formControlName="image" placeholder="URL Image" name="pictureRegister">
+          <span *ngIf="registrarUsuario.get('image')?.hasError('required') && registrarUsuario.get('image')?.touched" class="text-danger">
+            La <strong>URL de la imagen</strong> es requerida
+          </span>
         </mat-form-field>
 
         <mat-card-actions>
